@@ -11,11 +11,5 @@ describe WatchdogApp do
       post "/push", '{ "foo": "bar", "boolean": true, "array": [1, 2, 3] }'
       last_response.status.must_equal 422
     end
-
-    it "responds to a valid request" do
-      fixture = read_fixture("github_webhook_push_normal.json")
-      post "/push", fixture
-      last_response.status.must_equal 200
-    end
   end
 end
