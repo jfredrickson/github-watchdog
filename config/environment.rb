@@ -13,5 +13,12 @@ class WatchdogApp < Sinatra::Base
     Dir.glob("#{File.dirname(__FILE__)}/../lib/*.rb") { |lib| require File.basename(lib, '.*') }
 
     GitHub.token = ENV["GITHUB_TOKEN"]
+
+    patterns_file = File.join(File.dirname(__FILE__), "patterns.txt")
+    patterns_config = File.readlines(patterns_file).each { |line| line.chomp! }
+    pattern_strings = patterns_config.select { |line| !line.start_with?("#") && !line.empty? }
+    pattern_regexps = pattern_strings.map! { |str| str.to_regexp || str }
+    set :patterns, pattern_regexps
+    pp settings.patterns
   end
 end

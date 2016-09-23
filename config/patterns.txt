@@ -1,0 +1,8 @@
+# Watchdog keyword patterns
+#
+# This is a list of patterns that the Watchdog app will search for in GitHub
+# commits. List one pattern on each line. Patterns can be plain strings or
+# regexps.
+
+# Hexadecimal strings that could be secret keys
+/[abcdef\d]{40,}/i

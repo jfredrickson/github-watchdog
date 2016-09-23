@@ -6,6 +6,7 @@ gem "sinatra"
 gem "rake"
 gem "rack"
 gem "octokit"
+gem "to_regexp"
 
 group :development do
   gem "shotgun"
