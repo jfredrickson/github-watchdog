@@ -13,8 +13,8 @@ describe WatchdogApp do
     end
 
     it "responds to a valid request" do
-      fixture = "github_webhook_push_normal.json"
-      post "/push", File.read(File.join(File.dirname(__FILE__), "fixtures", fixture))
+      fixture = read_fixture("github_webhook_push_normal.json")
+      post "/push", fixture
       last_response.status.must_equal 200
     end
   end
