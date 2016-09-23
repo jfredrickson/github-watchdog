@@ -13,8 +13,12 @@ class Analyzer
     regex = Regexp.union(patterns)
     matches = []
     files.each do |file|
+      # Only examine files that have a patch (i.e., non-binary)
       if patch = file[:patch]
-        patch.match(regex) do |match|
+        # Ignore lines that were removed in the commit
+        existing_lines = patch.lines.select { |line| !line.start_with?("-") }
+        target = existing_lines.join("\n")
+        target.match(regex) do |match|
           matches << {
             match: match,
             file: file

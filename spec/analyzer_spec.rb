@@ -47,5 +47,13 @@ describe WatchdogApp do
       results = analyzer.match(patterns)
       results.count.must_equal 2
     end
+
+    it "ignores lines that were removed in the commit" do
+      github_commit = JSON.parse(read_fixture("github_commit_single_file.json"), symbolize_names: true)
+      analyzer = Analyzer.new(github_commit)
+      patterns = "public"
+      results = analyzer.match(patterns)
+      results.count.must_equal 0
+    end
   end
 end
