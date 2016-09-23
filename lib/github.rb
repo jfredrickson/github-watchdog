@@ -13,8 +13,7 @@ class GitHub
     @token
   end
 
-  def get_files(repo, commit_id)
-    commit = @client.commit(repo, commit_id)
-    commit[:files]
+  def get_commit(repo, commit_id)
+    @client.commit(repo, commit_id)
   end
 end
