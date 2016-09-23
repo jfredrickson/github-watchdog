@@ -1,4 +1,5 @@
 require "sinatra/base"
+require "json"
 
 class WatchdogApp < Sinatra::Base
   configure :development do
