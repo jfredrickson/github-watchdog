@@ -19,6 +19,7 @@ class WatchdogApp < Sinatra::Base
     pattern_strings = patterns_config.select { |line| !line.start_with?("#") && !line.empty? }
     pattern_regexps = pattern_strings.map! { |str| str.to_regexp || str }
     set :patterns, pattern_regexps
-    pp settings.patterns
+
+    enable :logging
   end
 end
