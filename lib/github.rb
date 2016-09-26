@@ -1,8 +1,8 @@
 require "octokit"
 
 class GitHub
-  def initialize
-    @client = Octokit::Client.new(token: @token)
+  def initialize(token)
+    @client = Octokit::Client.new(access_token: token)
   end
 
   def self.token=(token)

@@ -12,7 +12,7 @@ class WatchdogApp < Sinatra::Base
     $LOAD_PATH.unshift("#{File.dirname(__FILE__)}/../lib")
     Dir.glob("#{File.dirname(__FILE__)}/../lib/*.rb") { |lib| require File.basename(lib, '.*') }
 
-    GitHub.token = ENV["GITHUB_TOKEN"]
+    set :github_token, ENV["GITHUB_TOKEN"]
 
     patterns_file = File.join(File.dirname(__FILE__), "patterns.txt")
     patterns_config = File.readlines(patterns_file).each { |line| line.chomp! }
