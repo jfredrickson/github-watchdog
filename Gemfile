@@ -7,6 +7,7 @@ gem "rake"
 gem "rack"
 gem "octokit"
 gem "to_regexp"
+gem "puma"
 
 group :development do
   gem "shotgun"
