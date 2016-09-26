@@ -9,7 +9,7 @@ class Analyzer
 
   # Takes an array of patterns (string or regex) and returns an array of matches.
   def match(patterns)
-    files = @commit.fetch(:files)
+    files = @commit[:files]
     regex = Regexp.union(patterns)
     matches = []
     files.each do |file|
